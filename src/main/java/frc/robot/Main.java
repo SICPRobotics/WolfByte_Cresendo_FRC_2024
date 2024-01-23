@@ -4,6 +4,10 @@
 
 package frc.robot;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import edu.wpi.first.wpilibj.RobotBase;
 
 /**
@@ -20,6 +24,33 @@ public final class Main {
    * <p>If you change your main robot class, change the parameter type.
    */
   public static void main(String... args) {
+     
+    System.out.println("========== START PROGRAM MAIN");
+  
+
+ /*   
+    String lname = "";
+    lname = ".\\logs\\" + System.currentTimeMillis()/1000 + ".txt";
+    try {
+      File myObj = new File(lname);
+      if (myObj.createNewFile()) {                                
+        System.out.println("File created: " + myObj.getName());
+      } else {
+        System.out.println("File already exists.");
+      }
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+    try {
+      Constants.Swerve.myWriter = new FileWriter(lname);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+   
+     */
+
     RobotBase.startRobot(Robot::new);
   }
 }

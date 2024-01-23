@@ -1,5 +1,8 @@
 package frc.robot;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
@@ -16,6 +19,7 @@ public final class Constants {
     public static final double stickDeadband = 0.1;
 
     public static final class Swerve {
+        public static FileWriter myWriter;
         public static final int pigeonID = 13;
 
          public static final COTSTalonFXSwerveConstants chosenModule =  //MK4 Falcon 500 swerve module L2 drive/gear ratio
@@ -86,7 +90,15 @@ public final class Constants {
         /* Neutral Modes */
         public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Coast;
         public static final NeutralModeValue driveNeutralMode = NeutralModeValue.Brake;
-
+        public static void write(String text)
+        {
+            try {
+                myWriter.write(text);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
         /* Module Specific Constants */
         /* Front Left Module - Module 1 */
         public static final class Mod0 { //Mod 1 IDs and angle offset
@@ -128,7 +140,7 @@ public final class Constants {
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
     }
-
+    
     public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
         public static final double kMaxSpeedMetersPerSecond = 0.03;  // was 3.0
         public static final double kMaxAccelerationMetersPerSecondSquared = 0.03; // was 3.0
