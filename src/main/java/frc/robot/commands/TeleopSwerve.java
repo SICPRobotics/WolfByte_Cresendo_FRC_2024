@@ -40,7 +40,7 @@ public class TeleopSwerve extends Command {
             !robotCentricSup.getAsBoolean(), 
             true
         );
-        Constants.Swerve.write("text");
+       
 
     }
 }

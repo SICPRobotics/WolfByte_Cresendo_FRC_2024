@@ -8,6 +8,13 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
+/*data log imports */
+import edu.wpi.first.util.datalog.BooleanLogEntry;
+import edu.wpi.first.util.datalog.DataLog;
+import edu.wpi.first.util.datalog.DoubleLogEntry;
+import edu.wpi.first.util.datalog.StringLogEntry;
+import edu.wpi.first.wpilibj.DataLogManager;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -25,14 +32,22 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
+  StringLogEntry testLogEntry;
+  
   @Override
   public void robotInit() {
-
-    System.out.println("========== INITIALIZING ROBOT");
-  
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
+    DataLogManager.start();
+    DataLogManager.log("Why no workie work?????");
+    DataLog log = DataLogManager.getLog();
+    testLogEntry = new StringLogEntry(log, "/testinglog/stringlog");
+    
+    System.out.println("========== INITIALIZING ROBOT");
+  
+     
   }
 
   /**
