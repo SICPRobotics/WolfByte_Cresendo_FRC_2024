@@ -83,9 +83,9 @@ public final class Constants {
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 0.0025; // WAS 4.5 TODO: This must be tuned to specific robot
+        public static final double maxSpeed = 4.5; // was 4.5 TODO: This must be tuned to specific robot
         /** Radians per Second */
-        public static final double maxAngularVelocity = 0.025; // was 10.0 TODO: This must be tuned to specific robot
+        public static final double maxAngularVelocity = 10.0; // was 10.0 TODO: This must be tuned to specific robot
 
         /* Neutral Modes */
         public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Coast;
@@ -100,8 +100,8 @@ public final class Constants {
             }
         }
         /* Module Specific Constants */
-        /* Front Left Module - Module 1 */
-        public static final class Mod0 { //Mod 1 IDs and angle offset
+        /* Front Left Module - Module 0 */
+        public static final class Mod0 { //Mod 0 IDs and angle offset
             public static final int driveMotorID = 1;
             public static final int angleMotorID = 2;
             public static final int canCoderID = 9;
@@ -110,8 +110,8 @@ public final class Constants {
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
 
-        /* Front Right Module - Module 0 */
-        public static final class Mod1 { //Mod 0 IDs and angle offset
+        /* Front Right Module - Module 1 */
+        public static final class Mod1 { //Mod 1 IDs and angle offset
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 10;
@@ -120,8 +120,8 @@ public final class Constants {
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
         
-        /* Back Left Module - Module 2 */
-        public static final class Mod3 { //Mod 2 IDs and angle offset
+        /* Back Left Module - Module 3 */
+        public static final class Mod3 { //Mod 3 IDs and angle offset
             public static final int driveMotorID = 5;
             public static final int angleMotorID = 6;
             public static final int canCoderID = 11;
@@ -130,8 +130,8 @@ public final class Constants {
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
 
-        /* Back Right Module - Module 3 */
-        public static final class Mod2 { //Mod 3 IDs and angle offset
+        /* Back Right Module - Module 2 */
+        public static final class Mod2 { //Mod 2 IDs and angle offset
             public static final int driveMotorID = 7;
             public static final int angleMotorID = 8;
             public static final int canCoderID = 12;
