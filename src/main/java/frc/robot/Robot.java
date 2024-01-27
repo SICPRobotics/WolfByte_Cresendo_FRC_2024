@@ -8,12 +8,19 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
+import com.ctre.phoenix6.Orchestra;
+import com.ctre.phoenix6.hardware.TalonFX;
+
+import edu.wpi.first.hal.FRCNetComm.tResourceType;
 /*data log imports */
 import edu.wpi.first.util.datalog.BooleanLogEntry;
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.util.datalog.DoubleLogEntry;
 import edu.wpi.first.util.datalog.StringLogEntry;
 import edu.wpi.first.wpilibj.DataLogManager;
+
+import com.ctre.phoenix6.configs.AudioConfigs;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -22,6 +29,18 @@ import edu.wpi.first.wpilibj.DataLogManager;
  * project.
  */
 public class Robot extends TimedRobot {
+  Orchestra ourOrchestra;
+
+  TalonFX musicTalon1; 
+  //TalonFX musicTalon2 = new TalonFX(2);
+  //TalonFX musicTalon3 = new TalonFX(3);
+  //TalonFX musicTalon4 = new TalonFX(4);
+  //TalonFX musicTalon5 = new TalonFX(5);
+  //TalonFX musicTalon6 = new TalonFX(6);
+  //TalonFX musicTalon7 = new TalonFX(7);
+  //TalonFX musicTalon8 = new TalonFX(8);
+  
+
   public static final CTREConfigs ctreConfigs = new CTREConfigs();
 
   private Command m_autonomousCommand;
@@ -38,7 +57,18 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    ourOrchestra = new Orchestra();
+
+    musicTalon1 = new TalonFX(14); 
+  //TalonFX musicTalon2 = new TalonFX(2);
+  //TalonFX musicTalon3 = new TalonFX(3);
+  //TalonFX musicTalon4 = new TalonFX(4);
+  //TalonFX musicTalon5 = new TalonFX(5);
+  //TalonFX musicTalon6 = new TalonFX(6);
+  //TalonFX musicTalon7 = new TalonFX(7);
+  //TalonFX musicTalon8 = new TalonFX(8);
+
+    //m_robotContainer = new RobotContainer();
 
     DataLogManager.start();
     DataLogManager.log("Why no workie work?????");
@@ -46,8 +76,21 @@ public class Robot extends TimedRobot {
     testLogEntry = new StringLogEntry(log, "/testinglog/stringlog");
     
     System.out.println("========== INITIALIZING ROBOT");
-  
-     
+   
+
+        ourOrchestra.addInstrument(musicTalon1);
+   // ourOrchestra.addInstrument(musicTalon2);
+   // ourOrchestra.addInstrument(musicTalon3);
+   // ourOrchestra.addInstrument(musicTalon4);
+   // ourOrchestra.addInstrument(musicTalon5);
+   // ourOrchestra.addInstrument(musicTalon6);
+   // ourOrchestra.addInstrument(musicTalon7);
+   // ourOrchestra.addInstrument(musicTalon8); 
+
+   
+    AudioConfigs letmeadjust = new AudioConfigs();
+    letmeadjust.AllowMusicDurDisable = true;
+
   }
 
   /**
@@ -76,7 +119,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+   // m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
@@ -97,6 +140,19 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
+ 
+
+    var didWork = ourOrchestra.loadMusic("song1.chrp");
+
+      if(!didWork.isOK()){
+        System.out.println("did not work :(");
+      }
+      else{
+        System.out.println("it worked!");
+      }
+
+      ourOrchestra.play();
   }
 
   /** This function is called periodically during operator control. */

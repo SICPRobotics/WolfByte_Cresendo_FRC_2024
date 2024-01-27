@@ -120,7 +120,7 @@ public final class Constants {
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
         
-        /* Back Left Module - Module 3 */
+        /* Back Right Module - Module 3 */
         public static final class Mod3 { //Mod 3 IDs and angle offset
             public static final int driveMotorID = 5;
             public static final int angleMotorID = 6;
@@ -130,7 +130,7 @@ public final class Constants {
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
 
-        /* Back Right Module - Module 2 */
+        /* Back Left Module - Module 2 */
         public static final class Mod2 { //Mod 2 IDs and angle offset
             public static final int driveMotorID = 7;
             public static final int angleMotorID = 8;
